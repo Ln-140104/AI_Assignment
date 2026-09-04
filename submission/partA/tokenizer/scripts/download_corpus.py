@@ -23,6 +23,6 @@ def main():
     total=len(available['eng']); selected_ids=list(range(1,min(args.limit,total)+1))
     rows=[{'id':i,**{code:available[code][str(i)] for code in LANGUAGES}} for i in selected_ids]
     (data_dir/'corpus.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2),encoding='utf-8')
-    metadata={'dataset_name':'FLORES-101','dataset_version':'1.0.0','source':URL,'archive_sha256':digest,'languages':list(LANGUAGES.values()),'language_codes':LANGUAGES,'parallel':True,'split':SPLIT,'total_available_sentences':total,'selected_sentences':len(rows),'sampling_method':'first contiguous IDs from the documented devtest split','random_seed':None,'filtering':['selected IDs present in all five language files','stripped line endings'],'license':'CC-BY-SA-4.0','selected_ids':f'1-{len(rows)}'}
+    metadata={'dataset_name':'FLORES-101','dataset_version':'1.0.0','source':URL,'archive_sha256':digest,'languages':list(LANGUAGES.values()),'language_codes':LANGUAGES,'parallel':True,'split':SPLIT,'total_available_sentences':total,'selected_sentences':len(rows),'sampling_method':'first contiguous IDs from the documented devtest split','random_seed':None,'filtering':['selected IDs present in all five language files','NFC normalization and stripped line endings'],'license':'CC-BY-SA-4.0','selected_ids':f'1-{len(rows)}'}
     (data_dir/'corpus_metadata.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8'); print(json.dumps(metadata,ensure_ascii=False,indent=2))
 if __name__=='__main__': main()
