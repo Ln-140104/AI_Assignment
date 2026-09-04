@@ -17,8 +17,10 @@ For Part A3, the evaluation must be controlled and evidence-first:
    tokenizer such as XLM-RoBERTa-base.
 3. Keep the evaluation corpus fixed across tokenizers so any observed gap reflects
    language/tokenizer behavior rather than a different text sample.
-4. Measure multiple denominators on the same sentences: tokens/word, tokens/character,
-   tokens/byte, and tokens/sentence.
+4. Measure multiple denominators on the same sentences: tokens/word, tokens/grapheme,
+   tokens/byte, and tokens/sentence. Unicode code points are retained separately for
+   auditability; graphemes are counted as Unicode extended grapheme clusters using
+   the `regex` library's `\X` pattern.
 5. Preserve the original baseline as reference evidence while testing the stronger
    hypothesis that the Hindi penalty generalizes beyond the supplied sample.
 6. Record environment details and experiment metadata in the repo so the final result
