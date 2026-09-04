@@ -129,15 +129,7 @@ Longer prompts do not by themselves establish better serving throughput. In this
 
 ## B4 - Production Counter
 
-**Metric:** preemption rate, defined as preempted sequences divided by submitted sequences over a serving interval.
-
-**What it measures:** how often the scheduler must preempt sequences, which is directly recorded in the supplied benchmark as `preempted_seqs` and normalized by `num_requests` for an operational rate.
-
-**Why it tests B2:** the B2 inference is that the throughput boundary is a scheduler/KV saturation regime. A rising preemption rate is a direct operational signal of that mechanism.
-
-**Expected behavior:** near batch 24, the benchmark records 0 preemptions out of 24 requests, or 0%. At batch 32, the benchmark records 7/32 = 21.875%; at batch 48 it records 23/48 = 47.917%.
-
-**Falsifier:** if production showed the same throughput/latency degradation while preemption rate remained zero and KV capacity had substantial headroom, preemption-driven KV saturation would not explain the degradation and another bottleneck would need investigation.
+The single proposed serving metric is **preemption rate**, defined as preempted sequences divided by submitted sequences over a serving interval. It measures how often the scheduler must preempt sequences, using the supplied `preempted_seqs` divided by `num_requests`; it tests B2 because the inferred boundary is a scheduler/KV saturation regime and a rising rate is a direct operational signal. Near batch 24, the benchmark records 0/24 = 0%; batch 32 records 7/32 = 21.875%; and batch 48 records 23/48 = 47.917%. If production showed the same throughput/latency degradation while preemption rate remained zero and KV capacity had substantial headroom, preemption-driven KV saturation would be falsified and another bottleneck would need investigation.
 
 ## Evidence Classification
 
