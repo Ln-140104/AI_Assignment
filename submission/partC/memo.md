@@ -10,19 +10,19 @@
 
 ## Cost / feasibility
 
-**Reviewer budget:** 10 h/week x 2 weeks = 20 h. Allocate 4 h to rubric calibration, 8 h to 60 native paired judgments (30 Hindi + 30 Kannada; 60 x 8 min = 8 h), 4 h to semantic/regression review, and 4 h to final adjudication. Native evidence covers only Hindi/Kannada; the other four languages remain lower-confidence and are not claimed as natively validated.
+**Reviewer budget:** 10 h/week x 2 weeks = 20 h. Allocate 4 h to rubric calibration, 5.33 h to 40 native paired judgments (20 Hindi + 20 Kannada; 40 x 8 min = 320 min = 5.33 h), 6.67 h to semantic/regression review and final adjudication, and 4 h contingency. Native evidence covers only Hindi/Kannada; the other four languages remain lower-confidence and are not claimed as natively validated.
 
 **Derived option comparison:** prompt-only requires 0 training GPU-hours and 0 additional model calls per response. SFT would require an assumed 3,000 synthetic pairs (500/language x 6) and an assumed 256 total tokens/pair, or 768,000 training tokens, plus data QA and training/evaluation risk within two weeks. A rewriter would require an additional <=1B model call for every response; its latency and memory impact are not supplied and must be measured before launch. These are planning assumptions, not measurements.
 
 ## Evaluation plan
 
-**Success metric:** on 60 Hindi/Kannada native-rated paired judgments, the prompt-only variant must win against the current prompt in at least 39/60 cases (65%), with semantic-preservation regressions <=5% on the same set. The prompt-only path has no added model call; SFT or a rewriter would have to beat this threshold while also justifying their training or serving cost.
+**Success metric:** on 40 Hindi/Kannada native-rated paired judgments, the prompt-only variant must win against the current prompt in at least 26/40 cases (65%), with semantic-preservation regressions <=5% on the same set. The prompt-only path has no added model call; SFT or a rewriter would have to beat this threshold while also justifying their training or serving cost.
 
-**Kill criterion:** abandon prompt-only by the end of week 2 if it wins fewer than 39/60 judgments or semantic regressions exceed 5%. Do not claim native-quality success for Tamil, Telugu, Bengali, or Marathi without qualified review.
+**Kill criterion:** abandon prompt-only by the end of week 2 if it wins fewer than 26/40 judgments or semantic regressions exceed 5%. Do not claim native-quality success for Tamil, Telugu, Bengali, or Marathi without qualified review.
 
 ## Day-1 experiment
 
-Create baseline and prompt-only outputs for 120 fixed prompts, 20 per target language. Use 60 pairs (30 Hindi + 30 Kannada) for native review and a checklist for the remaining 60 cases. **Decision rule:** continue only if the Hindi/Kannada result reaches at least 65% preference with no more than 5% semantic regressions; otherwise investigate a different option before week 2.
+Create baseline and prompt-only outputs for 120 fixed prompts, 20 per target language. Use 40 pairs (20 Hindi + 20 Kannada) for native review and a checklist for the remaining 80 cases. **Decision rule:** continue only if the Hindi/Kannada result reaches at least 26/40 wins (65% preference) with no more than 5% semantic regressions; otherwise investigate a different option before week 2.
 
 ## Timeline
 

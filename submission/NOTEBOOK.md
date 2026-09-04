@@ -303,15 +303,16 @@ requires no training, and can be reverted immediately.
 
 ### Assumptions
 
-The planning evaluation uses 60 fixed prompts, 10 per target language. A reviewer
+The planning evaluation uses 120 fixed prompts, 20 per target language. A reviewer
 judgment is assumed to take 8 minutes. The reviewer budget is `10 hours/week * 2 weeks
-= 20 hours`; 8 hours support 60 judgments, with the remainder allocated to calibration,
-regression review, and adjudication. These are planning assumptions, not measurements.
+= 20 hours`; 40 Hindi/Kannada prompts receive native judgments, costing `40 * 8 = 320
+minutes = 5.33 hours`, with the remainder allocated to calibration, regression review,
+adjudication, and contingency. These are planning assumptions, not measurements.
 
 ### Result
 
 The prompt-only path fits the stated timeline and has no added serving-model dependency.
-The success gate is at least `39/60 = 65%` paired preference with semantic regressions
+The success gate is at least `26/40 = 65%` paired preference with semantic regressions
 at or below `5%`. The kill gate is failure of either threshold by the end of week 2.
 
 ### Interpretation
@@ -329,7 +330,8 @@ than measured outcomes.
 ### Final decision
 
 Choose **(c) prompt-engineering only** for the launch review, with a rollback-ready
-prompt, a day-1 baseline-versus-prompt comparison, and the week-2 kill criterion.
+prompt, a day-1 baseline-versus-prompt comparison using 20 prompts per language, 40
+native Hindi/Kannada judgments, and the week-2 kill criterion.
 
 ---
 

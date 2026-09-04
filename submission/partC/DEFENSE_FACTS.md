@@ -20,29 +20,29 @@
 - [DERIVED] `10 hours/week * 2 weeks = 20 reviewer-hours`.
 - [ASSUMPTION] The fixed evaluation set has 120 prompts: 20 per target language.
 - [ASSUMPTION] Each native paired judgment takes 8 minutes.
-- [DERIVED] `60 native judgments * 8 minutes = 480 minutes = 8 hours`; the 60 are 30 Hindi and 30 Kannada.
-- [DECISION] Allocate 4 hours to rubric calibration, 8 hours to 60 paired Hindi/Kannada judgments, 4 hours to semantic/regression review, and 4 hours to final adjudication.
+- [DERIVED] `40 native judgments * 8 minutes = 320 minutes = 5.33 hours`; the 40 are 20 Hindi and 20 Kannada.
+- [DECISION] Allocate 4 hours to rubric calibration, 5.33 hours to 40 paired Hindi/Kannada judgments, 6.67 hours to semantic/regression review and final adjudication, and 4 hours contingency.
 - [FACT] The reviewer covers Hindi and Kannada only.
 - [DECISION] Native validation is not claimed for Tamil, Telugu, Bengali, or Marathi.
 
 ## Success metric
 
 - [ASSUMPTION] Fixed evaluation set: 120 prompts, 20 per target language.
-- [DECISION] Prompt-only succeeds if it wins at least 39 of 60 native-rated paired judgments: `39 / 60 = 65%`.
+- [DECISION] Prompt-only succeeds if it wins at least 26 of 40 native-rated paired judgments: `26 / 40 = 65%`.
 - [DECISION] It must also keep semantic-preservation regressions at or below 5% on the same test set.
 - [FACT] These are decision thresholds, not observed results.
 
 ## Kill criterion
 
-- [DECISION] Abandon prompt-only by the end of week 2 if preference is below `39/60` or semantic regressions exceed `5%`.
+- [DECISION] Abandon prompt-only by the end of week 2 if preference is below `26/40` or semantic regressions exceed `5%`.
 - [FACT] The deadline is chosen because the launch review is in week 3.
 - [FACT] No claim is made that this threshold has already been met.
 
 ## Day-1 experiment
 
 - [DECISION] Generate baseline and prompt-only outputs for 120 fixed prompts: 20 each in Hindi, Kannada, Tamil, Telugu, Bengali, and Marathi.
-- [DECISION] Metric: paired style preference for 60 Hindi/Kannada cases and semantic-preservation checklist across the remaining cases.
-- [DECISION] Decision rule: continue only at >=65% Hindi/Kannada preference and <=5% semantic regressions.
+- [DECISION] Metric: paired style preference for 40 Hindi/Kannada cases and semantic-preservation checklist across the remaining 80 prompts.
+- [DECISION] Decision rule: continue only at >=26/40 Hindi/Kannada preference and <=5% semantic regressions.
 - [ASSUMPTION] The first experiment fits within day 1 because it uses a fixed prompt set and no training or new serving model.
 
 ## Timeline
