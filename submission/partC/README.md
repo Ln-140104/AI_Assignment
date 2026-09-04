@@ -29,4 +29,11 @@ The analysis will consider:
 
 ## Status
 
-Not yet executed.
+Completed as a decision memo only. The recommendation is prompt-engineering only;
+no production model implementation or external API is assumed.
+
+## Deliverables
+
+- `memo.md` — one-page decision memo
+- `DEFENSE_FACTS.md` — labeled assumptions, arithmetic, comparison, evaluation plan,
+  and caveats for the live defense

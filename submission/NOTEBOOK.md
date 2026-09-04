@@ -286,9 +286,50 @@ The counter is a proposed validation metric, not an observed production value.
 
 ## Decision Log
 
-| Decision | Evidence | Confidence |
-|---|---|---|
-| TBD | TBD | TBD |
+### Hypothesis
+
+Given two weeks of implementation/evaluation, one A100-80GB, one Hindi/Kannada reviewer
+for 10 hours/week, a launch review in three weeks, and no external API budget, the most
+reversible path is likely to be prompt-only rather than training or adding a serving model.
+
+### Decision analysis
+
+Compared SFT, a <=1B inference-time rewriter, and prompt-only across engineering
+complexity, data requirement, training requirement, inference cost, latency risk,
+reviewer burden, multilingual generalization risk, reversibility, and launch fit.
+SFT requires assumed synthetic data and QA plus a training/evaluation loop. A rewriter
+adds an unmeasured model call and latency/memory risk. Prompt-only adds no model call,
+requires no training, and can be reverted immediately.
+
+### Assumptions
+
+The planning evaluation uses 60 fixed prompts, 10 per target language. A reviewer
+judgment is assumed to take 8 minutes. The reviewer budget is `10 hours/week * 2 weeks
+= 20 hours`; 8 hours support 60 judgments, with the remainder allocated to calibration,
+regression review, and adjudication. These are planning assumptions, not measurements.
+
+### Result
+
+The prompt-only path fits the stated timeline and has no added serving-model dependency.
+The success gate is at least `39/60 = 65%` paired preference with semantic regressions
+at or below `5%`. The kill gate is failure of either threshold by the end of week 2.
+
+### Interpretation
+
+The reviewer can provide native evidence only for Hindi and Kannada. Tamil, Telugu,
+Bengali, and Marathi remain lower-confidence because no native reviewer coverage is
+available in the supplied constraints.
+
+### Revision
+
+No experiment was run and no quality improvement is claimed. The memo therefore frames
+all data volume, review rate, and thresholds as assumptions or decision criteria rather
+than measured outcomes.
+
+### Final decision
+
+Choose **(c) prompt-engineering only** for the launch review, with a rollback-ready
+prompt, a day-1 baseline-versus-prompt comparison, and the week-2 kill criterion.
 
 ---
 
