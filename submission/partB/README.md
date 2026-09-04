@@ -23,4 +23,20 @@ results and determine the practical operating region.
 
 ## Status
 
-Not yet executed.
+Executed against the supplied model specification and benchmark log. Part C is not
+started.
+
+## Evidence Artifacts
+
+- `analysis.md` contains the B1 KV derivation, B2 long-context sweep, B3 corrected
+	throughput interpretation, and B4 operational counter proposal.
+- `evidence/capacity_calculations.json` contains the reproducible arithmetic output.
+- `DEFENSE_FACTS.md` contains only directly measured or transparently derived facts.
+
+## Reproduction
+
+From the repository root:
+
+```text
+python submission/partB/scripts/reconcile_capacity.py
+```

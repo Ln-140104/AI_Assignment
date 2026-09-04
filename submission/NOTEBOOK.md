@@ -214,11 +214,71 @@ throughput. Those questions remain outside this Step 3 stopping point.
 
 # Part B
 
-## Hypothesis Log
+## Capacity Reconciliation
 
-| ID | Hypothesis | Test | Result | Status |
-|---|---|---|---|---|
-| B-H1 | TBD | TBD | TBD | Open |
+### B1 - Hypothesis
+
+The model specification's KV dimensions imply a finite full-context concurrency boundary that should align directionally with the benchmark's utilization and preemption transition.
+
+### Experiment/calculation
+
+Ran `python submission/partB/scripts/reconcile_capacity.py` using `model_spec.md` and `bench_log.csv`. Derived `114,688` KV bytes/token, `448 MiB` per 4,096-token sequence, `12.080` decimal GB KV budget, and `25` complete theoretical sequences.
+
+### Result
+
+Long batch 24 logged `0.93` KV utilization and `0` preemptions; batch 32 logged `0.97` and `7`; batch 48 logged `0.97` and `23`.
+
+### Interpretation
+
+The log is directionally consistent with the simplified capacity calculation, while exact equality is not expected because allocator and runtime details are omitted.
+
+### Revision
+
+The practical recommendation is to cap long-context scheduling at batch 24, subject to production validation.
+
+## B2/B3 - Long-Context Throughput
+
+### Hypothesis
+
+The long-prompt throughput increase stops when the scheduler enters a KV-constrained preemption regime, and the report may be treating total processed-token throughput as generated-token goodput.
+
+### Experiment/calculation
+
+Compared long rows at batches 4, 8, 16, 24, 32, and 48. Recomputed batch-24 goodput as both `24 * 512 / 61.16 = 200.916` and `1607.4 * 512 / 4096 = 200.925` generated tokens/s.
+
+### Result
+
+Reported throughput rises to `1607.4` at batch 24, then falls to `1384.0` and `1298.5`; preemptions rise from `0` to `7` and `23`, while TTFT and p95 latency increase. Batch 48 generated goodput is `162.314` tokens/s, not approximately `3200`.
+
+### Interpretation
+
+The report appears to have read `reported_tok_s`, which includes prompt/prefill plus generation, as generated-token throughput.
+
+### Revision
+
+The corrected conclusion distinguishes total processed-token throughput from generated-token goodput and does not recommend packing longer prompts solely to improve throughput.
+
+## B4 - Production Counter
+
+### Hypothesis
+
+Preemption rate is the most direct operational counter for the inferred scheduler/KV saturation mechanism.
+
+### Experiment/calculation
+
+Derived preemption rates from `preempted_seqs / num_requests`: batch 24 `0%`, batch 32 `21.875%`, batch 48 `47.917%`.
+
+### Result
+
+The supplied benchmark provides the expected direction but no production observation.
+
+### Interpretation
+
+Production preemption rate should be monitored alongside KV utilization and latency; degradation with zero preemption and substantial KV headroom would falsify this mechanism.
+
+### Revision
+
+The counter is a proposed validation metric, not an observed production value.
 
 ---
 
