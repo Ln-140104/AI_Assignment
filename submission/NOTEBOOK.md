@@ -208,8 +208,7 @@ throughput. Those questions remain outside this Step 3 stopping point.
 
 | ID | Hypothesis | Test | Result | Status |
 |---|---|---|---|---|
-| A-H1 | TBD | TBD | TBD | Open |
-
+| A-H1 | The Hindi token-fertility gap observed in the starter sample may generalize to other Indian languages, but the magnitude may depend strongly on the tokenizer. | Evaluate English, Hindi, Tamil, Telugu, and Kannada using GPT-2 and XLM-R on the same FLORES-101 corpus; compare tokens/sentence and normalized denominators. | GPT-2 shows large expansion for Hindi and Dravidian languages, while XLM-R substantially reduces the expansion: Hindi 1.25x, Tamil 1.35x, Telugu 1.32x, Kannada 1.35x relative to English. | Closed |
 ---
 
 # Part B
