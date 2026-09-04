@@ -1,0 +1,5 @@
+experiment_id,language,metric,value,unit,source,reproduced,notes
+A1,eng,fertility,1.265,tok/word,C:\Users\LAKSHMINARAYANAN\OneDrive\Desktop\Placement_Prep\AI_Assignment\starter_kit (1)\starter_kit\corpus_sample\eng_sample.txt,yes,faithful reproduction of the supplied implementation
+A1,eng,tok_per_char,0.226,tok/char,C:\Users\LAKSHMINARAYANAN\OneDrive\Desktop\Placement_Prep\AI_Assignment\starter_kit (1)\starter_kit\corpus_sample\eng_sample.txt,yes,faithful reproduction of the supplied implementation
+A1,hin,fertility,7.448,tok/word,C:\Users\LAKSHMINARAYANAN\OneDrive\Desktop\Placement_Prep\AI_Assignment\starter_kit (1)\starter_kit\corpus_sample\hin_sample.txt,yes,faithful reproduction of the supplied implementation
+A1,hin,tok_per_char,1.579,tok/char,C:\Users\LAKSHMINARAYANAN\OneDrive\Desktop\Placement_Prep\AI_Assignment\starter_kit (1)\starter_kit\corpus_sample\hin_sample.txt,yes,faithful reproduction of the supplied implementation

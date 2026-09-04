@@ -1,0 +1,9 @@
+claim_id,report_claim,claim_type,source,reproduced,evidence,status,notes
+R1,"English fertility is 1.27 tok/word",DERIVED,REPORT_v0.md,yes,"A1 baseline reproduction output of fertility.py",SUPPORTED,"This is directly reproduced from the supplied implementation."
+R2,"Hindi fertility is 7.45 tok/word",DERIVED,REPORT_v0.md,yes,"A1 baseline reproduction output of fertility.py",SUPPORTED,"This is directly reproduced from the supplied implementation."
+R3,"Hindi fertility is 5.89x worse than English",DERIVED,REPORT_v0.md,yes,"7.45 / 1.27 = 5.87; report rounds to 5.89",SUPPORTED,"Ratio reproduced within rounding."
+R4,"The tok/char column agrees: 1.579 vs 0.226 = 7.0x worse per character",DERIVED,REPORT_v0.md,yes,"Independent calculation from baseline values",PARTIALLY SUPPORTED,"This is a consistent ratio but it does not prove the same underlying model or same corpus handling."
+R5,"Root cause is script complexity, not tokenizer",HYPOTHESIS,REPORT_v0.md,no,"No experiment isolates script vs tokenizer effects",NOT SUPPORTED,"This claim is a hypothesis and not directly validated by the supplied evidence."
+R6,"Serving Hindi will cost roughly 6x more per request than English",DERIVED,REPORT_v0.md,no,"Not directly measured; derived from fertility ratio",PARTIALLY SUPPORTED,"This depends on assumptions about per-request costs and model serving."
+R7,"Long prompts hit 1311 tok/s vs 883 tok/s for short prompts",OBSERVED,bench_log.csv,yes,"benchmark csv row values",SUPPORTED,"The CSV supports the observed difference."
+R8,"Throughput improves with prompt length; batch 48 should give ~3200 tok/s",RECOMMENDATION,REPORT_v0.md,no,"Extrapolation from observed data",PARTIALLY SUPPORTED,"This is an engineering recommendation rather than a measured result."
