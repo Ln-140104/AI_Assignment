@@ -1,0 +1,12 @@
+Total candidate IDs: 1000
+Complete across all five languages: 1000
+Dropped - missing Hindi: 0
+Dropped - missing Tamil: 0
+Dropped - missing Telugu: 0
+Dropped - missing Kannada: 0
+Dropped - empty text: 0
+Duplicate IDs: 0
+Malformed Unicode or unexpected whitespace entries: 0
+Final aligned sample: 1000
+Per-language non-empty counts: eng=1000, hin=1000, tam=1000, tel=1000, kan=1000
+valid=True

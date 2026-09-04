@@ -1,0 +1,5 @@
+original_claim,new_evidence,status,reasoning
+Hindi is approximately 6x worse than English,Original sample 5.89x; controlled FLORES result varies by tokenizer and metric,PARTIALLY_SUPPORTED,"The original sample reproduces, but 6x is not a general constant."
+Script complexity is the root cause,GPT-2 and XLM-R produce different language gaps,NOT_SUPPORTED,The experiment does not isolate script from tokenizer behavior.
+Tokenization inefficiency is language-invariant,Language and tokenizer rankings differ,NOT_SUPPORTED,Tokenizer choice changes relative expansion.
+Observed token penalty is inherent to the language,Controlled measurements only,UNRESOLVED,The evidence does not establish an intrinsic linguistic cause.

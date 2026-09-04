@@ -1,0 +1,17 @@
+{
+  "dataset_name": "FLORES-101",
+  "dataset_version": "1.0.0",
+  "source": "https://dl.fbaipublicfiles.com/flores101/dataset/flores101_dataset.tar.gz",
+  "archive_sha256": "49fa80207b09fcc0eca8253ed13303b3a0ae0f16081af862601c73ac76f2cba6",
+  "languages": ["English", "Hindi", "Tamil", "Telugu", "Kannada"],
+  "language_codes": {"eng": "English", "hin": "Hindi", "tam": "Tamil", "tel": "Telugu", "kan": "Kannada"},
+  "parallel": true,
+  "split": "devtest",
+  "total_available_sentences": 1012,
+  "selected_sentences": 1000,
+  "sampling_method": "first contiguous IDs from the documented devtest split",
+  "random_seed": null,
+  "filtering": ["selected IDs present in all five language files", "NFC normalization and stripped line endings"],
+  "license": "CC-BY-SA-4.0",
+  "selected_ids": "1-1000"
+}

@@ -1,0 +1,11 @@
+python=3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+tiktoken=0.11.0
+transformers=4.56.1
+tokenizers=0.22.0
+datasets=4.1.1
+sentencepiece=0.2.1
+huggingface_hub=0.34.4
+matplotlib=3.10.9
+gpt2_encoding=gpt2; special_tokens=false; truncation=false; max_length=not applied
+xlm-roberta-base; special_tokens=false; truncation=false; max_length=not applied
+normalization=NFC during corpus preparation; lowercase=false

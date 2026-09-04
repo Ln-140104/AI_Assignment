@@ -1,0 +1,7 @@
+tokenizer,metric,descending_rank
+gpt2,mean_tokens_per_sentence,tam > kan > tel > hin > eng
+gpt2,relative_to_english,tam > kan > tel > hin > eng
+gpt2,mean_tokens_per_word,tam > kan > tel > hin > eng
+xlm-roberta-base,mean_tokens_per_sentence,kan > tam > tel > hin > eng
+xlm-roberta-base,relative_to_english,kan > tam > tel > hin > eng
+xlm-roberta-base,mean_tokens_per_word,kan > tam > tel > hin > eng

@@ -34,4 +34,16 @@ The supplied starter kit is preserved under:
 
 ## Status
 
-Not yet executed.
+Completed for five aligned languages: English, Hindi, Tamil, Telugu, and Kannada.
+The controlled sample uses 1,000 shared FLORES-101 `devtest` IDs. Part B and Part C
+are intentionally out of scope for this stage.
+
+## Reproduction
+
+```text
+python partA/tokenizer/scripts/download_corpus.py --limit 1000
+python partA/tokenizer/scripts/prepare_corpus.py
+python partA/tokenizer/scripts/validate_corpus.py
+python partA/tokenizer/scripts/run_tokenizer_comparison.py
+python partA/tokenizer/scripts/verify_results.py
+```

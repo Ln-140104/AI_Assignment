@@ -147,6 +147,63 @@ The supplied report is reproducible for the starter-kit corpus and implementatio
 
 # Part A
 
+## A3 Validation — Multilingual Coverage
+
+### Initial problem
+
+The first controlled run reported only English and Hindi from OPUS-100 `en-hi`.
+It did not satisfy the required English, Hindi, Tamil, Telugu, and Kannada coverage.
+
+### Investigation
+
+The official FLORES-200 Hub files were inaccessible without authentication. A public,
+documented FLORES-101 release archive was therefore used instead of fabricating access
+or joining unrelated bilingual corpora. Its `devtest` split contains shared IDs across
+the five required languages.
+
+### Resolution
+
+The pipeline now downloads the pinned FLORES-101 version 1.0.0 archive, verifies its
+SHA256, NFC-normalizes the selected text, validates alignment, and evaluates GPT-2 and
+XLM-RoBERTa-base. It writes sentence-level observations and independent aggregate checks.
+
+### Final corpus
+
+FLORES-101 `devtest`, source archive SHA256
+`49fa80207b09fcc0eca8253ed13303b3a0ae0f16081af862601c73ac76f2cba6`, languages
+`eng`, `hin`, `tam`, `tel`, and `kan`.
+
+### Final sample
+
+1,000 contiguous IDs selected from 1,012 available. All five languages are present for
+every selected ID; validation found no duplicates, empty entries, or unexpected
+whitespace after documented normalization.
+
+### Results
+
+GPT-2 mean tokens/sentence: English 26.744, Hindi 198.124, Tamil 415.467, Telugu
+346.939, Kannada 363.247. XLM-RoBERTa mean tokens/sentence: English 30.306, Hindi
+37.806, Tamil 40.902, Telugu 39.949, Kannada 41.017. Full distributions and denominators
+are in `partA/tokenizer/results/master_results.csv`.
+
+### Interpretation
+
+The Hindi result is tokenizer-dependent: GPT-2 gives 7.408x sentence expansion versus
+English, while XLM-R gives 1.247x. Tamil, Telugu, and Kannada show the same direction,
+but not the same magnitude. The original 5.89x sample claim is therefore partially
+supported as a sample observation, not as a general constant.
+
+### Rejected hypotheses
+
+- Script complexity alone explains the observed penalty: not established.
+- Tokenization inefficiency is language-invariant: not supported.
+- The penalty is an inherent property of the language: unresolved by token counts alone.
+
+### Open questions
+
+The experiment does not establish serving cost, model quality, causality, or production
+throughput. Those questions remain outside this Step 3 stopping point.
+
 ## Hypothesis Log
 
 | ID | Hypothesis | Test | Result | Status |
